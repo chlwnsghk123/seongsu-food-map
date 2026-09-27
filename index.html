@@ -72,6 +72,12 @@ h1{font-size:46px;font-weight:800;letter-spacing:-.035em;line-height:1.12;margin
 .score small{font-size:12px;color:var(--ink-3);margin-left:4px;align-self:flex-end;padding-bottom:4px}
 .star{width:18px;height:18px;fill:var(--gold)}
 .award{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:800;color:#a3261a;border:1.5px solid #a3261a;border-radius:4px;padding:2px 8px}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.act{font:inherit;font-size:13.5px;font-weight:700;line-height:1.2;color:var(--ink-2);background:#fff;border:1px solid #cfcdc6;border-radius:6px;padding:0 12px 0 10px;min-height:36px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;cursor:pointer}
+.act:hover{border-color:var(--ink);color:var(--ink)}
+.act svg{flex:none;width:16px;height:16px}
+.nv rect{fill:#03c75a}.nv path{fill:#fff}
+.share svg{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .strip{display:grid;grid-template-columns:1.4fr 1fr;gap:6px;grid-auto-rows:220px;margin-top:16px}
 .strip figure{position:relative;overflow:hidden;border-radius:4px;background:var(--m-bg)}
 .strip img{width:100%;height:100%;object-fit:cover}
@@ -91,6 +97,8 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 .menu td:last-child{text-align:right;font-weight:700;white-space:nowrap;padding-left:12px}
 .foot{margin-top:40px;font-size:12.5px;color:var(--ink-3)}
 .foot p+p{margin-top:4px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:20;transform:translate(-50%,8px);background:var(--ink);color:#fff;font-size:14px;font-weight:600;padding:10px 16px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.18);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
 @media (max-width:980px){
   .layout{grid-template-columns:1fr}
   .mapcol{position:relative;height:auto;border-left:0;border-bottom:1px solid var(--rule);order:-1}
@@ -134,6 +142,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">1</span><div class="spot-t"><h2>카모토</h2><p class="kind"><span>한식</span><span>오리곰탕</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.8점, 리뷰 62개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.8</b><small>리뷰 62</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/1439858221" target="_blank" rel="noopener" aria-label="네이버 지도에서 카모토 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="카모토 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.kakaocdn.net/mystore/C7F0F51535044F80B4D1A1976DD7A8A3" alt="카모토, 오리곰탕" loading="lazy" width="400" height="300"><figcaption>오리곰탕</figcaption></figure><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/2fe1d018f91056290ba1875f529ad80d49240442?original" alt="카모토, 오리곰탕 한 상" loading="lazy" width="400" height="300"><figcaption>오리곰탕 한 상</figcaption></figure></div>
 <p class="body">오리 가슴살을 올린 맑은 오리곰탕에 부추를 수북하게 얹어 내는 집이에요. 오리인데도 잡내 없이 깔끔하다는 평이 많아요.</p>
 <p class="tip">참깨 소스를 두른 오리안심 냉채는 일찍 떨어지는 날이 있어요. 전통주 잔술 세트도 있어요.</p>
@@ -143,6 +152,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">2</span><div class="spot-t"><h2>권식족발</h2><p class="kind"><span>한식</span><span>족발</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.6점, 리뷰 142개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.6</b><small>리뷰 142</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/13558042" target="_blank" rel="noopener" aria-label="네이버 지도에서 권식족발 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="권식족발 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.kakaocdn.net/mystore/28AA1831ABBB43BDAA66B4CA2288CB24" alt="권식족발, 반반왕족발" loading="lazy" width="400" height="300"><figcaption>반반왕족발</figcaption></figure><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/acacd1d4d614eb23e22d68cd582fade627feb27e?original" alt="권식족발, 불족발" loading="lazy" width="400" height="300"><figcaption>불족발</figcaption></figure></div>
 <p class="body">성수역 앞에서 10년 넘게 자리를 지킨 족발집이에요. 720시간 숙성한 소스에 매일 생족을 삶고, 불족발은 직화로 구워 불향을 입혀요.</p>
 <p class="tip">반반왕족발을 시키면 일반 족발과 매운 불족발을 한 번에 먹을 수 있어요. 계란찜이 같이 나와요.</p>
@@ -152,6 +162,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">3</span><div class="spot-t"><h2>멘야포모</h2><p class="kind"><span>일식</span><span>토마토 라멘</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.6점, 리뷰 75개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.6</b><small>리뷰 75</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/2066487603" target="_blank" rel="noopener" aria-label="네이버 지도에서 멘야포모 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="멘야포모 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.kakaocdn.net/local/kakaomapPhoto/review/a887b716efc5a94ae1dedd4d75fcc8ab3defd906?original" alt="멘야포모, 토마토 라멘" loading="lazy" width="400" height="300"><figcaption>토마토 라멘</figcaption></figure><figure><img src="https://t1.kakaocdn.net/local/kakaomapPhoto/review/cde09645b46be81324b3e6aa90365c843f7f285e?original" alt="멘야포모, 라멘 한 상" loading="lazy" width="400" height="300"><figcaption>라멘 한 상</figcaption></figure></div>
 <p class="body">토마토를 베이스로 한 라멘을 내는 집이에요. 면을 먹고 남은 국물에 밥을 말면 리조또처럼 되는데, 이게 이 집에서 먹는 방식이에요.</p>
 <p class="tip">한 그릇 1만 원이라 가볍게 들르기 좋아요.</p>
@@ -161,6 +172,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">4</span><div class="spot-t"><h2>스시도쿠 더성수</h2><p class="kind"><span>일식</span><span>스시</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.5점, 리뷰 211개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.5</b><small>리뷰 211</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/1029146941" target="_blank" rel="noopener" aria-label="네이버 지도에서 스시도쿠 더성수 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="스시도쿠 더성수 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.kakaocdn.net/mystore/87EFC71514244027B68E15CEE0E8138A" alt="스시도쿠 더성수, 스시 플레이트" loading="lazy" width="400" height="300"><figcaption>스시 플레이트</figcaption></figure><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/672a090a22aa59eb40d823cb4511639a72164021?original" alt="스시도쿠 더성수, 초밥 한 접시" loading="lazy" width="400" height="300"><figcaption>초밥 한 접시</figcaption></figure></div>
 <p class="body">초밥 플레이트부터 후토마키, 히츠마부시까지 메뉴 폭이 넓은 스시집이에요. 테이블에 붓이 놓여 있어서 간장을 초밥에 직접 발라 먹어요.</p>
 <p class="tip">가게에서 추천하는 메뉴는 정품스시와 그란도 후토마키예요.</p>
@@ -170,6 +182,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">5</span><div class="spot-t"><h2>눈꽃돼지</h2><p class="kind"><span>한식</span><span>돼지고기 구이</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.5점, 리뷰 72개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.5</b><small>리뷰 72</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/1319129858" target="_blank" rel="noopener" aria-label="네이버 지도에서 눈꽃돼지 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="눈꽃돼지 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/c8e904795a62089dba1d772a9f109cd29b21437a?original" alt="눈꽃돼지, 구워 주는 삼겹살" loading="lazy" width="400" height="300"><figcaption>구워 주는 삼겹살</figcaption></figure><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/0379fb3f41eae7e19cbe776f3dcf345db11574d3?original" alt="눈꽃돼지, 통삼겹 한 판" loading="lazy" width="400" height="300"><figcaption>통삼겹 한 판</figcaption></figure></div>
 <p class="body">오래 숙성한 돼지고기를 직원이 테이블에서 직접 구워 주는 고깃집이에요. 통삼겹과 특목살이 기본이고, 이베리코 부위도 있어요.</p>
 <p class="tip">토요일은 오후 4시에 열고 일요일은 쉬어요.</p>
@@ -179,6 +192,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">6</span><div class="spot-t"><h2>피터팬 돈까스&스파게티</h2><p class="kind"><span>일식</span><span>경양식 돈까스</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.5점, 리뷰 59개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.5</b><small>리뷰 59</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/34351571" target="_blank" rel="noopener" aria-label="네이버 지도에서 피터팬 돈까스&amp;스파게티 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="피터팬 돈까스&amp;스파게티 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/1b74b01991a24ce8e0ee142564ba23dff83191ce?original" alt="피터팬 돈까스&스파게티, 돈까스 세트" loading="lazy" width="400" height="300"><figcaption>돈까스 세트</figcaption></figure><figure><img src="https://t1.kakaocdn.net/local/kakaomapPhoto/review/b65b1dce8b6c28f1e4b002cef62d17bfd784fa85?original" alt="피터팬 돈까스&스파게티, 매운 돈까스" loading="lazy" width="400" height="300"><figcaption>매운 돈까스</figcaption></figure></div>
 <p class="body">식전 수프가 먼저 나오는 옛날식 경양식 돈까스집이에요. 돈까스에 스파게티를 곁들인 세트가 기본이고, 매운 돈까스를 찾는 사람도 많아요.</p>
 <p class="tip">성수역에서 조금 걸어야 해서, 성수2가 쪽 일정과 묶는 게 좋아요.</p>
@@ -188,6 +202,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">7</span><div class="spot-t"><h2>르프리크</h2><p class="kind"><span>양식</span><span>버거</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.3점, 리뷰 547개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.3</b><small>리뷰 547</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/1227114216" target="_blank" rel="noopener" aria-label="네이버 지도에서 르프리크 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="르프리크 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.kakaocdn.net/mystore/DFE065E50ED64CE9843870C1720E0542" alt="르프리크, 시그니처 버거" loading="lazy" width="400" height="300"><figcaption>시그니처 버거</figcaption></figure><figure><img src="https://t1.kakaocdn.net/mystore/F2C983B9A57649ABB8B696D0944A39D9" alt="르프리크, 챗 포테이토" loading="lazy" width="400" height="300"><figcaption>챗 포테이토</figcaption></figure></div>
 <p class="body">매콤한 내쉬빌 스타일 치킨버거로 이름난 성수 버거집이에요. 바삭하게 튀긴 닭다리살 패티에 아삭한 코울슬로를 얹어 내요.</p>
 <p class="tip">맵기는 단계로 고를 수 있어요. 둘이면 시그니처와 시칠리안을 하나씩 시켜 나눠 먹기 좋아요.</p>
@@ -197,6 +212,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">8</span><div class="spot-t"><h2>파르코</h2><p class="kind"><span>양식</span><span>나폴리 피자</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.3점, 리뷰 249개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.3</b><small>리뷰 249</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/1227244952" target="_blank" rel="noopener" aria-label="네이버 지도에서 파르코 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="파르코 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.kakaocdn.net/local/kakaomapPhoto/review/161551cc3177a5659eea919640af1b934522c1d9?original" alt="파르코, 마르게리따" loading="lazy" width="400" height="300"><figcaption>마르게리따</figcaption></figure><figure><img src="https://t1.kakaocdn.net/local/kakaomapPhoto/review/7d21f9f9d868582b947f8733ba1843bd2d722537?original" alt="파르코, 화덕 피자" loading="lazy" width="400" height="300"><figcaption>화덕 피자</figcaption></figure></div>
 <p class="body">나폴리피자장인협회 인증을 받은 피제리아예요. 2019년 나폴리피자장인대회에서 국내 1위, 세계 4위를 했어요. 장작 화덕에서 구운 도우가 얇고 쫄깃해요.</p>
 <p class="tip">웨이팅이 두 팀 넘으면 테이블링으로 원격 줄서기가 돼요.</p>
@@ -206,6 +222,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">9</span><div class="spot-t"><h2>이가네양꼬치</h2><p class="kind"><span>중식</span><span>양꼬치</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.3점, 리뷰 101개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.3</b><small>리뷰 101</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/1059490459" target="_blank" rel="noopener" aria-label="네이버 지도에서 이가네양꼬치 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="이가네양꼬치 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/69beabff13dd91f279bb1b2c66c25d047e441554?original" alt="이가네양꼬치, 양꼬치" loading="lazy" width="400" height="300"><figcaption>양꼬치</figcaption></figure><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/5db647bea9ca8235e91cd33484b4ab58d0461819?original" alt="이가네양꼬치, 양갈비" loading="lazy" width="400" height="300"><figcaption>양갈비</figcaption></figure></div>
 <p class="body">양갈비와 양꼬치를 초벌해서 내주는 집이라 굽기가 편해요. 잡내가 적다는 평이 많고, 매장이 넓어서 여럿이 가기 좋아요.</p>
 <p class="tip">늦게까지 열어서 2차로 가기도 좋아요.</p>
@@ -215,6 +232,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">10</span><div class="spot-t"><h2>까망</h2><p class="kind"><span>양식</span><span>파스타</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.3점, 리뷰 65개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.3</b><small>리뷰 65</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/1392050056" target="_blank" rel="noopener" aria-label="네이버 지도에서 까망 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="까망 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/f6fc1b3480dcc8464c0163dadf296488abb0c1e0?original" alt="까망, 가지그라탕" loading="lazy" width="400" height="300"><figcaption>가지그라탕</figcaption></figure><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/26f257b66f0e827a8025327320027c38cc52872a?original" alt="까망, 크림 파스타" loading="lazy" width="400" height="300"><figcaption>크림 파스타</figcaption></figure></div>
 <p class="body">파스타와 필라프를 내는 아담한 캐주얼 양식집이에요. 조명이 따뜻하고 조용한 편이라 이야기하며 먹기 좋아요.</p>
 <p class="tip">리뷰에서 가장 많이 나오는 메뉴는 가지그라탕과 필라프예요.</p>
@@ -224,6 +242,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">11</span><div class="spot-t"><h2>홍보석</h2><p class="kind"><span>중식</span><span>동네 중식당</span></p></div>
 <div class="score" aria-label="카카오맵 별점 4.3점, 리뷰 55개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>4.3</b><small>리뷰 55</small></div></header>
 
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/17914604" target="_blank" rel="noopener" aria-label="네이버 지도에서 홍보석 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="홍보석 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/815a6a95d1b49cf55c9502750594134f45a4957d?original" alt="홍보석, 탕수육" loading="lazy" width="400" height="300"><figcaption>탕수육</figcaption></figure><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/26aeed1dd814ff25150b2d4ab40593c2530385ab?original" alt="홍보석, 가게 앞" loading="lazy" width="400" height="300"><figcaption>가게 앞</figcaption></figure></div>
 <p class="body">오래 한자리를 지킨 동네 중식당이에요. 면 요리 없이 짬뽕밥과 탕수육 위주로 내고, 식사 뒤엔 아메리카노를 줘요.</p>
 <p class="tip">저녁 7시에 닫고 주말엔 쉬니 평일 점심에 맞춰 가세요.</p>
@@ -233,6 +252,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
 <header class="spot-h"><span class="no" aria-hidden="true">12</span><div class="spot-t"><h2>계월곰탕</h2><p class="kind"><span>한식</span><span>닭곰탕</span></p></div>
 <div class="score" aria-label="카카오맵 별점 3.5점, 리뷰 72개"><svg class="star" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.8l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.7l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></svg><b>3.5</b><small>리뷰 72</small></div></header>
 <span class="award">미쉐린 빕 구르망 2026</span>
+<div class="acts"><a class="act" href="https://map.naver.com/p/entry/place/1317631172" target="_blank" rel="noopener" aria-label="네이버 지도에서 계월곰탕 보기"><svg class="nv" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="4"/><path d="M4.5 4.25h2.3l2.4 3.55V4.25h2.3v7.5H9.2L6.8 8.2v3.55H4.5z"/></svg>네이버 지도</a><button class="act share" type="button" aria-label="계월곰탕 네이버 지도 링크 공유"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.75v8.5M4.75 4.75 8 1.75l3.25 3M5.25 7H4a.75.75 0 0 0-.75.75v6c0 .41.34.75.75.75h8c.41 0 .75-.34.75-.75v-6A.75.75 0 0 0 12 7h-1.25"/></svg>공유</button></div>
 <div class="strip"><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/9142ea0a5d90ef2e51b8f13949bc74258fa4b23b?original" alt="계월곰탕, 백곰탕" loading="lazy" width="400" height="300"><figcaption>백곰탕</figcaption></figure><figure><img src="https://t1.daumcdn.net/local/kakaomapPhoto/review/4d08809b41b29ba56f469d0c7745152917b0df57?original" alt="계월곰탕, 닭수육 곁들임" loading="lazy" width="400" height="300"><figcaption>닭수육 곁들임</figcaption></figure></div>
 <p class="body">미쉐린 가이드 2026 빕 구르망에 오른 닭곰탕집이에요. 저온 조리한 닭가슴살을 밥 위에 얹고 기름을 걷어낸 맑은 육수를 부어 내요.</p>
 <p class="tip">간이 슴슴한 편이라 호불호가 갈려요. 매콤한 쪽이 좋으면 홍곰탕을 고르세요.</p>
@@ -262,6 +282,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
   </div>
 </aside>
 </div>
+<p class="toast" id="toast" role="status" aria-live="polite"></p>
 <script>
 (function(){
   var spots=[].slice.call(document.querySelectorAll('.spot'));
@@ -314,6 +335,28 @@ table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)focus(e.target.id)})},{rootMargin:'-40% 0px -55% 0px'});
     spots.forEach(function(s){io.observe(s)});
   }
+  var toast=document.getElementById('toast'),tt;
+  function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},2400)}
+  function copy(url){
+    function done(){say('네이버 지도 링크를 복사했어요')}
+    function old(){
+      var t=document.createElement('textarea'),ok=false;
+      t.value=url;t.setAttribute('readonly','');t.style.cssText='position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(t);t.select();t.setSelectionRange(0,url.length);
+      try{ok=document.execCommand('copy')}catch(e){}
+      document.body.removeChild(t);
+      if(ok)done();else window.prompt('네이버 지도 링크',url);
+    }
+    if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(url).then(done,old);else old();
+  }
+  spots.forEach(function(s){
+    var a=s.querySelector('.acts a'),name=s.querySelector('h2').textContent;
+    s.querySelector('.share').addEventListener('click',function(){
+      var d={title:name,text:name,url:a.href};
+      if(navigator.share&&(!navigator.canShare||navigator.canShare(d)))navigator.share(d).catch(function(e){if(!e||e.name!=='AbortError')copy(d.url)});
+      else copy(d.url);
+    });
+  });
   apply();
 })();
 </script>
